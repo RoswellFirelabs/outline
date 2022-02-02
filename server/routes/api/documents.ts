@@ -40,6 +40,7 @@ import {
 } from "@server/validation";
 import env from "../../env";
 import pagination from "./middlewares/pagination";
+import { uuid4 } from "@sentry/utils";
 
 const router = new Router();
 
@@ -1356,6 +1357,7 @@ router.post("documents.import", auth(), async (ctx) => {
 
 router.post("documents.create", auth(), async (ctx) => {
   const {
+    id = uuid4(),
     title = "",
     text = "",
     publish,
@@ -1410,6 +1412,7 @@ router.post("documents.create", auth(), async (ctx) => {
   }
 
   const document = await documentCreator({
+    id,
     title,
     text,
     publish,
