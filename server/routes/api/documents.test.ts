@@ -1821,7 +1821,7 @@ describe("#documents.import", () => {
 });
 
 describe("#documents.create", () => {
-  fit("should create as a new document - failing case", async () => {
+  it("should create as a new document - failing case", async () => {
     const { user, collection } = await seed();
     const res = await server.post("/api/documents.create", {
       body: {
